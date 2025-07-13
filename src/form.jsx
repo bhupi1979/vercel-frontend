@@ -132,15 +132,7 @@ function onref(){
 }
   return (
     <>
-    {loading && <Circles
-    height="80"
-        width="80"
-        color="#4fa94d"
-        ariaLabel="circles-loading"
-        wrapperStyle={{}}
-        wrapperClass=""
-        visible={true}
-    />}
+   
     <h1 className="bg bg-info text-black text-center p-1">Enter The Student-Data</h1>
     <form onSubmit={student} noValidate className="mx-auto w-50" id="studentform">
   <div className="mb-3">
