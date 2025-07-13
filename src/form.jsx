@@ -1,8 +1,10 @@
 import { useEffect, useRef, useState } from "react";
 import Studentlist from "./Studentlist";
 import axios from "axios";
+import { Circles } from "react-loader-spinner";
 
 export default function Newform() {
+   const [loading, setLoading] = useState(true);
   const [msg,setMsg]=useState("")
   const [showMsg, setShowMsg] = useState(true);
    let [studentdata,setStudentdata]=useState([])
@@ -10,6 +12,7 @@ export default function Newform() {
   const [count,setCount]=useState(1)
    useEffect(()=>{
  studentgetdata()
+ setLoading(false)
   },[])
   let studentgetdata=()=>{
     axios.get("https://vercel-backend-g6yd.onrender.com/web/api/student/student-view").then((res)=>{
@@ -123,6 +126,15 @@ function onref(){
 }
   return (
     <>
+    {!loading && <Circles
+    height="80"
+        width="80"
+        color="#4fa94d"
+        ariaLabel="circles-loading"
+        wrapperStyle={{}}
+        wrapperClass=""
+        visible={true}
+    />}
     <h1 className="bg bg-info text-black text-center p-1">Enter The Student-Data</h1>
     <form onSubmit={student} noValidate className="mx-auto w-50" id="studentform">
   <div className="mb-3">
