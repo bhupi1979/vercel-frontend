@@ -1,10 +1,41 @@
 import axios from 'axios'
-import React, { useEffect, useState } from 'react'
-
-export default function Studentlist({datalist}) {
+import React, { forwardRef, useEffect, useImperativeHandle, useState } from 'react'
+import { Spinner } from "react-bootstrap";
+let Studentlist= forwardRef ((props,ref )=> {
   let i=0
-    
+   const [loading, setLoading] = useState(true);
+   let [studentdata,setStudentdata]=useState([])
+     useEffect(()=>{
+ studentgetdata()
+ setTimeout(() => {
+  
+  setLoading(false)
+ }, 10000)
+     },[])
+   let  studentgetdata=()=>{
+    axios.get("https://vercel-backend-g6yd.onrender.com/web/api/student/student-view").then((res)=>{
+      //alert(res.data)
+      //console.log(res.data)
+           return res.data
+    }).then((finaldata)=>{
+     // console.log(finaldata)
+      if(finaldata.status)
+        setStudentdata(finaldata.data)
+    }).catch(error => {
+    console.error('Error fetching data:', error); // Handle error
+  })
+  }
+  useImperativeHandle(ref, () => ({
+    refreshList: studentgetdata
+  }));
   return (
+    <>
+    {loading &&
+<div className="d-flex justify-content-center mt-5">
+<Spinner animation="border" role="status" >
+      <span className="text-danger visually-hidden">Loading...</span>
+    </Spinner>
+    </div>}
     <div>
        <div className="container mt-5">
       <h1 className="text-danger">Student-List</h1>
@@ -23,9 +54,9 @@ export default function Studentlist({datalist}) {
          </thead>
          <tbody>
           {
-            datalist.length ?
+            studentdata.length ?
             
-              datalist.map((item,index)=>
+              studentdata.map((item,index)=>
            (
                 <tr key={index}>
                   <td>{++i}</td>
@@ -77,5 +108,7 @@ export default function Studentlist({datalist}) {
       </table>
     </div>
     </div>
+    </>
   )
-}
+})
+export default Studentlist

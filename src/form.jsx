@@ -1,39 +1,40 @@
 import { useEffect, useRef, useState } from "react";
 import Studentlist from "./Studentlist";
 import axios from "axios";
-import { Spinner } from "react-bootstrap";
+
 
 
 export default function Newform() {
-   const [loading, setLoading] = useState(true);
+  const studentListRef = useRef()
+   const [loading, setLoading] = useState(false);
   const [msg,setMsg]=useState("")
   const [showMsg, setShowMsg] = useState(true);
-   let [studentdata,setStudentdata]=useState([])
+   //let [studentdata,setStudentdata]=useState([])
   const countRef=useRef(0)
   const [count,setCount]=useState(1)
-   useEffect(()=>{
- studentgetdata()
- setTimeout(() => {
+//    useEffect(()=>{
+//  studentgetdata()
+//  setTimeout(() => {
   
-  setLoading(false)
- }, 10000); 
+//   setLoading(false)
+//  }, 10000); 
 
 
  
-  },[])
-  let studentgetdata=()=>{
-    axios.get("https://vercel-backend-g6yd.onrender.com/web/api/student/student-view").then((res)=>{
-      //alert(res.data)
-      //console.log(res.data)
-           return res.data
-    }).then((finaldata)=>{
-     // console.log(finaldata)
-      if(finaldata.status)
-        setStudentdata(finaldata.data)
-    }).catch(error => {
-    console.error('Error fetching data:', error); // Handle error
-  })
-  }
+ // },[])
+  // let studentgetdata=()=>{
+  //   axios.get("https://vercel-backend-g6yd.onrender.com/web/api/student/student-view").then((res)=>{
+  //     //alert(res.data)
+  //     //console.log(res.data)
+  //          return res.data
+  //   }).then((finaldata)=>{
+  //    // console.log(finaldata)
+  //     if(finaldata.status)
+  //       setStudentdata(finaldata.data)
+  //   }).catch(error => {
+  //   console.error('Error fetching data:', error); // Handle error
+  // })
+  // }
  
   // useEffect(()=>{
   //     countRef.current=count
@@ -74,7 +75,8 @@ export default function Newform() {
       setMsg(" data disnot save due to Duplicate Phone value")
      
         }
-        studentgetdata()
+        //studentgetdata()
+         studentListRef.current.refreshList()
        
     }
     //end of response data
@@ -154,13 +156,13 @@ function onref(){
   <button type="submit" className="btn btn-primary w-100">Submit</button>
 </form>
 {msg && showMsg &&<h1 className="position-fixed top-50 start-0 text-white bg-danger">{msg}</h1>}
-{loading &&
+{/* {loading &&
 <div className="d-flex justify-content-center mt-5">
 <Spinner animation="border" role="status" >
       <span className="text-danger visually-hidden">Loading...</span>
     </Spinner>
-    </div>}
-   <Studentlist datalist={studentdata}/>
+    </div>} */}
+   {<Studentlist ref={studentListRef} />}
     </>
   )
 }
