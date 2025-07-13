@@ -146,7 +146,7 @@ export default function Newform() {
         </div>
         <button type="submit" className="btn btn-primary w-100">Submit</button>
       </form>
-      {msg && showMsg && <h1 className="position-fixed top-50 start-0 text-white bg-danger">{msg}</h1>}
+      {msg && showMsg && <h1 className="position-fixed top-0 end-0 text-white bg-danger">{msg}</h1>}
       {/* {loading &&
 <div className="d-flex justify-content-center mt-5">
 <Spinner animation="border" role="status" >

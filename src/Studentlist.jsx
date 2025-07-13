@@ -4,6 +4,8 @@ import { Spinner } from "react-bootstrap";
 let Studentlist= forwardRef ((props,ref )=> {
   let i=0
    const [loading, setLoading] = useState(true);
+   const [msg, setMsg] = useState("")
+  const [showMsg, setShowMsg] = useState(true);
    let [studentdata,setStudentdata]=useState([])
      useEffect(()=>{
  studentgetdata()
@@ -31,8 +33,21 @@ let Studentlist= forwardRef ((props,ref )=> {
 
   //*********function for deletion of record************//
   let deletestudentdata=(e)=>{
-    alert('ur in delete and id is=='+e.target.value)
-    //    axios.delete(`https://vercel-backend-g6yd.onrender.com/web/api/student/student-delete/:${id}`)
+    //alert('ur in delete and id is=='+e.target.value)
+    let id=e.target.value
+    let confirm1=confirm("DO YOU WANT DELETE THIS STUDENT RECOFED")
+    if(confirm1)
+    {
+        axios.delete(`https://vercel-backend-g6yd.onrender.com/web/api/student/student-delete/:${id}`).then((res)=>{
+setMsg("Data deleted successfuly")
+        }).catch((err)=>{
+            setMsg(err)
+        })
+setShowMsg(true)
+      setTimeout(() => {
+        setShowMsg(false)
+      }, 8000)
+    }
   }
   //************************* */
   return (
@@ -43,6 +58,8 @@ let Studentlist= forwardRef ((props,ref )=> {
       <span className="text-danger visually-hidden">Loading...</span>
     </Spinner>
     </div>}
+          {msg && showMsg && <h1 className="position-fixed top-0 end-0 text-white bg-danger">{msg}</h1>}
+
     <div>
        <div className="container mt-5">
       <h1 className="text-danger">Student-List</h1>
