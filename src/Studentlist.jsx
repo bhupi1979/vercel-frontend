@@ -45,6 +45,7 @@ setShowMsg(true)
       setTimeout(() => {
         setShowMsg(false)
       }, 8000)
+      studentgetdata()
         }).catch((err)=>{
           console.log(err.data)
             setMsg(err)
