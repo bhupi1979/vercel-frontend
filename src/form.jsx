@@ -13,7 +13,7 @@ export default function Newform() {
    useEffect(()=>{
  studentgetdata()
  setTimeout(() => {
-  alert('you r in spinner')
+  
   setLoading(false)
  }, 10000); 
 
