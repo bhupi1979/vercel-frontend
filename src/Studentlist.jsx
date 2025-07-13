@@ -27,7 +27,14 @@ let Studentlist= forwardRef ((props,ref )=> {
   }
   useImperativeHandle(ref, () => ({
     refreshList: studentgetdata
-  }));
+  }))
+
+  //*********function for deletion of record************//
+  let deletestudentdata=(e)=>{
+    alert('ur in delete and id is=='+e.target.value)
+    //    axios.delete(`https://vercel-backend-g6yd.onrender.com/web/api/student/student-delete/:${id}`)
+  }
+  //************************* */
   return (
     <>
     {loading &&
@@ -59,12 +66,12 @@ let Studentlist= forwardRef ((props,ref )=> {
               studentdata.map((item,index)=>
            (
                 <tr key={index}>
-                  <td>{++i}</td>
+                   <td>{++i}</td>
                   <td>{item.name}</td>
                   <td>{item.email}</td>
                   <td>{item.phone}</td>
                    <td><button className="btn btn-warning text-white">Edit</button></td>
-            <td><button className="btn btn-danger text-white">Delete</button></td>
+            <td><button className="btn btn-danger text-white" onClick={deletestudentdata} value={item._id}>Delete</button></td>
                 </tr>
               )
             )
