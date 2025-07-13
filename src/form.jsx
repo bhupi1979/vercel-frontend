@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Studentlist from "./Studentlist";
 import axios from "axios";
-import { Circles } from "react-loader-spinner";
+
 
 export default function Newform() {
    const [loading, setLoading] = useState(true);
