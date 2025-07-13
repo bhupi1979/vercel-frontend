@@ -12,7 +12,12 @@ export default function Newform() {
   const [count,setCount]=useState(1)
    useEffect(()=>{
  studentgetdata()
- setLoading(false)
+ setTimeout(() => {
+  setLoading(false)
+ }, 10000); 
+
+
+ 
   },[])
   let studentgetdata=()=>{
     axios.get("https://vercel-backend-g6yd.onrender.com/web/api/student/student-view").then((res)=>{
