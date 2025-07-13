@@ -33,7 +33,7 @@ export default function Studentlist({datalist}) {
                   <td>{item.email}</td>
                   <td>{item.phone}</td>
                    <td><button className="btn  text-white">Edit</button></td>
-            <td><button className="btn btn-danger">Delete</button></td>
+            <td><button className="btn text-white">Delete</button></td>
                 </tr>
               )
             )
