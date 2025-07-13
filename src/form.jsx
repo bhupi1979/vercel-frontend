@@ -12,7 +12,7 @@ export default function Newform() {
  studentgetdata()
   },[])
   let studentgetdata=()=>{
-    axios.get("http://localhost:8000/web/api/student/student-view").then((res)=>{
+    axios.get("https://vercel.com/ravita-paliwas-projects/vercel-backend/web/api/student/student-view").then((res)=>{
       //alert(res.data)
       //console.log(res.data)
            return res.data
@@ -45,7 +45,7 @@ export default function Newform() {
     {
     alert("form submitted")
     let formdata={name:newstudent.studentname,email:newstudent.studentemail,phone:newstudent.studentphone}
-    axios.post("http://localhost:8000/web/api/student/student-insert",formdata).then((response) =>
+    axios.post("https://vercel.com/ravita-paliwas-projects/vercel-backend/web/api/student/student-insert",formdata).then((response) =>
       { console.log(response.data)
       console.log(response.data.status)
      // alert(response.data)
