@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Studentlist from "./Studentlist";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
 
 
 export default function Newform() {
@@ -132,7 +133,9 @@ function onref(){
 }
   return (
     <>
-   
+    {loading &&<Spinner animation="border" role="status">
+      <span className="visually-hidden">Loading...</span>
+    </Spinner>}
     <h1 className="bg bg-info text-black text-center p-1">Enter The Student-Data</h1>
     <form onSubmit={student} noValidate className="mx-auto w-50" id="studentform">
   <div className="mb-3">
