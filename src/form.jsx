@@ -133,9 +133,7 @@ function onref(){
 }
   return (
     <>
-    {loading &&<Spinner animation="border" role="status">
-      <span className="visually-hidden">Loading...</span>
-    </Spinner>}
+    
     <h1 className="bg bg-info text-black text-center p-1">Enter The Student-Data</h1>
     <form onSubmit={student} noValidate className="mx-auto w-50" id="studentform">
   <div className="mb-3">
@@ -156,6 +154,12 @@ function onref(){
   <button type="submit" className="btn btn-primary w-100">Submit</button>
 </form>
 {msg && showMsg &&<h1 className="position-fixed top-50 start-0 text-white bg-danger">{msg}</h1>}
+{loading &&
+<div className="d-flex justify-content-center mt-5">
+<Spinner animation="border" role="status" >
+      <span className="text-danger visually-hidden">Loading...</span>
+    </Spinner>
+    </div>}
    <Studentlist datalist={studentdata}/>
     </>
   )
