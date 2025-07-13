@@ -35,18 +35,21 @@ let Studentlist= forwardRef ((props,ref )=> {
   let deletestudentdata=(e)=>{
     //alert('ur in delete and id is=='+e.target.value)
     let id=e.target.value
+    alert(id)
     let confirm1=confirm("DO YOU WANT DELETE THIS STUDENT RECOFED")
     if(confirm1)
     {
         axios.delete(`https://vercel-backend-g6yd.onrender.com/web/api/student/student-delete/:${id}`).then((res)=>{
 setMsg("Data deleted successfuly")
-        }).catch((err)=>{
-            setMsg(err)
-        })
 setShowMsg(true)
       setTimeout(() => {
         setShowMsg(false)
       }, 8000)
+        }).catch((err)=>{
+          console.log(err.data)
+            setMsg(err)
+        })
+
     }
   }
   //************************* */
