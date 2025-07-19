@@ -259,7 +259,7 @@ let errorMsg = "Something went wrong!";
 </button>
 
 {/* modal */}
-<div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel" aria-hidden="true" ref={ModalRef}>
+<div className="modal fade" id="exampleModal"  aria-labelledby="exampleModalLabel"  ref={ModalRef}>
   <div className="modal-dialog modal-dialog-centered">
     <div className="modal-content">
       <div className="modal-header">
