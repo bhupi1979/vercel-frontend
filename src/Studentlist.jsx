@@ -283,7 +283,7 @@ let errorMsg = "Something went wrong!";
         </div>
         <div className="mb-3">
           <label className="form-label">update Your Phone Number</label>
-          <input type="text" className="form-control" name="phone"  required value={newEditstudent.phone||"" } onChange={()=>{onChangehandle(e,120)}} />
+          <input type="text" className="form-control" name="phone"  required value={newEditstudent.phone||"" } onChange={(e)=>{onChangehandle()}} />
            {errors.phone && <div className="text-danger">{errors.phone}</div>}
         </div>
         <button type="submit" className="btn btn-primary w-100" >Update</button>
