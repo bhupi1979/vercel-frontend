@@ -144,7 +144,7 @@ export default function Newform() {
           <input type="text" className="form-control" name="studentphone" onChange={ChangeHandle} required value={newstudent.studentphone || ""} />
           {errors.phone && <div className="text-danger">{errors.phone}</div>}
         </div>
-        <button type="submit" className="btn btn-primary w-100">Submit</button>
+        <button type="submit" className="btn btn-primary w-100">Add Data</button>
       </form>
       {msg && showMsg && <h1 className="position-fixed top-0 end-0 text-white bg-danger">{msg}</h1>}
       {/* {loading &&
